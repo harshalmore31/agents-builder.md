@@ -1,0 +1,6 @@
+# Core dependencies
+rich>=13.0.0
+
+# Optional AI enhancement
+python-dotenv>=1.0.0
+# swarms  # Uncomment if using AI refinement
