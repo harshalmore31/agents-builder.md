@@ -19,8 +19,8 @@ Agent Builder helps you create standardized prompts for AI agents (like Claude, 
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/agents-builder.md.git
-cd agents-builder.md
+git clone https://github.com/agents-builder/agents-builder.git
+cd agents-builder
 
 # Install dependencies
 pip install -r requirements.txt
@@ -76,11 +76,11 @@ TEST:
 - **JSON Export** - Save and reuse configurations
 - **AGENTS.md Ready** - Generate files for your repos
 
-### 🚀 Coming in v2.0 - AI Enhancement
-- **Hybrid Mode** - Human input + AI refinement
-- **Claude Integration** - Auto-improve prompts with AI
-- **Template Library** - Pre-built agents for common tasks
-- **Team Sharing** - Share prompts across organizations
+### 🚀 Optional AI Enhancement
+- **AI Refinement** - Enhance prompts with Claude Opus ([setup guide](AI_REFINEMENT.md))
+- **Works Without AI** - Fully functional offline mode
+- **Privacy First** - AI is completely optional
+- **Multiple Providers** - Support via swarms library
 
 ## File Structure
 
@@ -192,9 +192,11 @@ MIT - Use freely in your projects!
 ## Links
 
 - [Full Documentation](agent-builder/SIMPLE_AGENT_STANDARD_V1.md)
-- [Advanced Standard](agent-builder/AGENT_PROMPT_STANDARD.md) (for power users)
-- [Examples](agent-builder/examples/)
-- [Community Templates](https://github.com/yourusername/agent-templates)
+- [AI Refinement Guide](AI_REFINEMENT.md)
+- [Quick Start Guide](agent-builder/quick_start.md)
+- [Examples](agent-builder/examples.py)
+- [Contributing](CONTRIBUTING.md)
+- [Community Templates](https://github.com/agents-builder/agent-templates)
 
 ---
 

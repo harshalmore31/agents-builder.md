@@ -1,6 +1,10 @@
-# Core dependencies
+# Core dependencies (required)
 rich>=13.0.0
 
-# Optional AI enhancement
-python-dotenv>=1.0.0
-# swarms  # Uncomment if using AI refinement
+# Optional: AI enhancement dependencies
+# Uncomment the lines below if you want AI refinement features:
+# python-dotenv>=1.0.0
+# swarms>=4.0.0
+
+# Note: The tool works perfectly without AI dependencies!
+# See AI_REFINEMENT.md for setup instructions

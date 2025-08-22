@@ -14,7 +14,7 @@ setup(
     description="Simple tool to create AI agent instructions using the 5-part AGENTS.md standard",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/agents-builder.md",
+    url="https://github.com/agents-builder/agents-builder",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -38,7 +38,7 @@ setup(
     entry_points={
         "console_scripts": [
             "agent-builder=agent_builder.simple_builder:main",
-            "agent-examples=agent_builder.examples:main",
+            "agent-examples=agent_builder.examples:list_examples",
         ],
     },
     include_package_data=True,
