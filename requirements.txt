@@ -1,10 +1,13 @@
-# Core dependencies (required)
+# Core dependencies
 rich>=13.0.0
+swarms>=4.0.0
+python-dotenv>=1.0.0
 
-# Optional: AI enhancement dependencies
-# Uncomment the lines below if you want AI refinement features:
-# python-dotenv>=1.0.0
-# swarms>=4.0.0
+# Development dependencies (install with: pip install -r requirements.txt -e .[dev])
+# pytest>=7.0.0
+# black>=23.0.0 
+# flake8>=6.0.0
+# mypy>=1.0.0
 
-# Note: The tool works perfectly without AI dependencies!
-# See AI_REFINEMENT.md for setup instructions
+# Testing dependencies (install with: pip install -r requirements.txt -e .[test])
+# pytest-cov>=4.0.0
