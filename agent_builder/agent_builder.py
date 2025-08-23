@@ -428,11 +428,20 @@ class AgentBuilder:
         # Reasoning pattern
         self.console.print("\n[bold]7. Reasoning Pattern[/bold]")
         patterns = ["analytical", "creative", "technical", "step-by-step", "comparative", "custom"]
-        self.console.print("Available patterns: " + ", ".join(patterns))
-        pattern = Prompt.ask("Choose reasoning pattern", choices=patterns, default="analytical")
         
-        if pattern == "custom":
+        # Display numbered options
+        for i, pattern_option in enumerate(patterns, 1):
+            self.console.print(f"  {i}. {pattern_option.title()}")
+        
+        choice = Prompt.ask("Choose reasoning pattern", 
+                          choices=[str(i) for i in range(1, len(patterns) + 1)], 
+                          default="1")
+        
+        selected_pattern = patterns[int(choice) - 1]
+        if selected_pattern == "custom":
             pattern = Prompt.ask("Define custom reasoning pattern")
+        else:
+            pattern = selected_pattern
         
         self.components["reasoning_pattern"] = pattern
         self.metrics.components_filled += 1
@@ -709,25 +718,23 @@ def interactive_mode_selection() -> AgentBuilderMode:
     
     console.print(table)
     
-    # Clean mode selection with tip
-    console.print(Panel(
-        "[bold yellow]Recommendation:[/bold yellow] Most users should start with AI-Assisted mode\n"
-        "[dim]It provides the best balance of ease-of-use and powerful features[/dim]",
-        title="Quick Tip",
-        border_style="yellow"
-    ))
+    # Clean mode selection with numbered options
+    console.print("\n[bold]Select your mode:[/bold]")
+    console.print("  1. Basic (2-3 min, simple tasks)")
+    console.print("  2. AI-Assisted (5-8 min, most use cases) [Recommended]")
+    console.print("  3. Expert (10-15 min, complex requirements)")
     
     mode_choice = Prompt.ask(
-        "\n[bold cyan]Select your mode[/bold cyan]",
-        choices=["basic", "ai-assisted", "expert"],
-        default="ai-assisted",
+        "\n[bold cyan]Choose mode[/bold cyan]",
+        choices=["1", "2", "3"],
+        default="2",
         console=console
     )
     
     mode_map = {
-        "basic": AgentBuilderMode.BASIC,
-        "ai-assisted": AgentBuilderMode.AI_ASSISTED,
-        "expert": AgentBuilderMode.EXPERT
+        "1": AgentBuilderMode.BASIC,
+        "2": AgentBuilderMode.AI_ASSISTED,  
+        "3": AgentBuilderMode.EXPERT
     }
     
     return mode_map[mode_choice]

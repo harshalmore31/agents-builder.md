@@ -4,64 +4,68 @@
 
 A professional AI agent prompt engineering framework with three-tier progressive complexity, making AI agent development accessible to everyone from beginners to experts through systematic prompt construction.
 
-## ✨ Key Features
+## Features
 
-- **🎯 Three-Tier Progressive System**: Basic → AI-Assisted → Expert modes
-- **🤖 AI-Powered Suggestions**: Intelligent prompt enhancement via Swarms integration  
-- **📊 Quality Metrics**: Real-time validation and success rate tracking
-- **💻 Professional Interface**: Clean, Windows-compatible terminal UI
-- **💾 Export & Save**: JSON export with comprehensive metrics
-- **📈 Performance Analytics**: Time-to-create and effectiveness tracking
+🎯 **Three-Tier Progressive System**: Basic → AI-Assisted → Expert modes for adaptive complexity  
+🤖 **AI-Powered Suggestions**: Intelligent prompt enhancement via Swarms integration  
+📊 **Quality Metrics**: Real-time validation and success rate tracking  
+💻 **Professional Interface**: Clean, Windows-compatible terminal UI  
+💾 **Export & Save**: JSON export with comprehensive metrics  
+📈 **Performance Analytics**: Time-to-create and effectiveness tracking  
+🛠️ **Interactive & Programmatic**: Support for both CLI interaction and API usage  
+⚡ **Fast Creation**: Generate professional prompts in 2-15 minutes
 
-## 🚀 Quick Start
+## Installation
 
-### Installation
+### Prerequisites
+
+- Python 3.8 or higher
+- Optional: API access to LLM providers for AI-assisted mode
+
+### Install from Source
 
 ```bash
-# Clone the repository
 git clone https://github.com/The-Swarm-Corporation/agents-builder.md.git
 cd agents-builder.md
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the demo
-python examples/demo.py
+pip install -e .
 ```
 
-### Basic Usage
+### Environment Setup
 
-```python
-from agent_builder import AgentBuilder, AgentBuilderMode
-
-# Interactive mode selection
-from agent_builder import interactive_mode_selection
-mode = interactive_mode_selection()
-builder = AgentBuilder(mode=mode)
-builder.build()
-builder.display_summary()
-
-# Programmatic usage
-builder = AgentBuilder(mode=AgentBuilderMode.BASIC, interactive=False)
-builder.components["role"] = "a helpful Python developer"
-builder.components["task"] = "review code for bugs and best practices"  
-builder.components["constraints"] = ["Be constructive", "Focus on security"]
-
-prompt = builder.generate_prompt()
-print(prompt)
-```
-
-### Quick Example
+For AI-assisted features, create a `.env` file with your API keys:
 
 ```bash
-# Run the demo
-python examples/demo.py
-
-# Test functionality  
-python tests/test_simple.py
+ANTHROPIC_API_KEY=your_anthropic_key_here
+OPENAI_API_KEY=your_openai_key_here
 ```
 
-## 🏗️ Three-Tier Architecture
+## Quick Start
+
+```python
+from agent_builder import AgentBuilder
+
+# Create and run agent builder
+builder = AgentBuilder()
+builder.build()
+
+# Your professional prompt is ready!
+print(builder.generate_prompt())
+```
+
+---
+
+## Architecture
+
+The Agent Builder framework consists of three progressive tiers:
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│     Basic       │    │  AI-Assisted    │    │     Expert      │
+│   3 Components  │───▶│   6 Components  │───▶│  11+ Components │
+│    2-3 min      │    │     5-8 min     │    │    10-15 min    │
+│   85% Success   │    │   92% Success   │    │   98% Success   │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
 
 | Mode | Components | Time | Success Rate | Best For |
 |------|------------|------|--------------|----------|
@@ -213,82 +217,65 @@ builder.components.update({
 # AI suggestions enhance the prompt automatically
 ```
 
+## Documentation
+
+For detailed documentation, see [DOCS.md](DOCS.md).
+
 ## 🤝 Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-**Quick Start:**
+We welcome contributions! Please feel free to open an issue or submit a pull request.
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📜 License
+## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 📚 Documentation
+## 📚 Citation
 
-For detailed documentation, examples, and advanced usage:
-
-- **[Complete Documentation](DOCS.md)** - Full API reference and usage guide
-- **[Examples](examples/)** - Comprehensive usage examples
-- **[Contributing](CONTRIBUTING.md)** - Development and contribution guidelines
-
-## 🤝 Contributing
-
-We welcome contributions! Agent Builder is designed to be extensible and community-driven.
-
-**Quick Start:**
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests and documentation
-5. Submit a pull request
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
-
-## 📖 Citation
-
-If you use Agent Builder in your research or project, please cite:
+If you use this work in your research, please cite:
 
 ```bibtex
-@software{agent_builder_2024,
-  author = {The Swarm Corporation},
-  title = {Agent Builder: Professional AI Agent Prompt Engineering},
-  url = {https://github.com/The-Swarm-Corporation/agents-builder.md},
-  year = {2024}
+@software{agent_builder_framework,
+    title={Agent Builder: A Professional AI Agent Prompt Engineering Framework},
+    author={The Swarm Corporation},
+    year={2024},
+    url={https://github.com/The-Swarm-Corporation/agents-builder.md}
 }
 ```
 
 ## 🔗 Related Work
 
-- **[Swarms Framework](https://github.com/kyegomez/swarms)** - Multi-agent orchestration platform
-- **[AI-CoScientist](https://github.com/The-Swarm-Corporation/AI-CoScientist)** - AI research assistant
+- [Swarms Framework](https://github.com/kyegomez/swarms) - Multi-agent AI orchestration
+- [AI-CoScientist](https://github.com/The-Swarm-Corporation/AI-CoScientist) - AI research assistant framework
 
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/The-Swarm-Corporation/agents-builder.md/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/The-Swarm-Corporation/agents-builder.md/discussions)
-- **Discord**: [Join our community](https://discord.gg/agentops)
-- **Documentation**: [Complete guide](DOCS.md)
+- **Email**: kye@swarms.world
+- **Discord**: [Join our community](https://discord.gg/swarms-999382051935506503)
 
-## 🚧 TODO
+## 📝 TODO
 
-- [ ] Web interface for non-technical users
-- [ ] Template marketplace for community-contributed prompts
-- [ ] Integration with additional AI providers (OpenAI, Anthropic direct APIs)
-- [ ] Advanced analytics dashboard with usage metrics
-- [ ] Team collaboration features for enterprise use
-- [ ] Plugin system for custom validators and enhancers
-- [ ] Multi-language prompt generation support
-- [ ] Automated prompt testing and optimization
-- [ ] Integration with popular AI development frameworks
-- [ ] Mobile app for prompt creation on-the-go
+- [ ] **Add PyPI packaging**: Publish to Python Package Index for pip installation
+- [ ] **Web interface**: Browser-based agent builder for non-technical users
+- [ ] **Template marketplace**: Community-contributed prompt templates and examples
+- [ ] **Enhanced AI integration**: Support for additional LLM providers and local models
+- [ ] **Advanced analytics**: Usage metrics dashboard and success rate tracking
+- [ ] **Team collaboration**: Multi-user workspace and prompt sharing features
+- [ ] **Plugin system**: Custom validators, enhancers, and component extensions
+- [ ] **Multi-language support**: Generate prompts in different languages
+- [ ] **Automated testing**: Prompt validation and A/B testing framework
+- [ ] **API integration**: Connect with popular AI development frameworks
+- [ ] **Mobile app**: iOS/Android app for prompt creation on-the-go
+- [ ] **Export formats**: Support for YAML, TOML, and other configuration formats
 
 ---
 
-**🎯 Start with AI-Assisted mode for the best balance of simplicity and power!**
-
-*Built with ❤️ by [The Swarm Corporation](https://github.com/The-Swarm-Corporation)*
+<p align="center">
+  <strong>Built with Swarms for advancing AI agent development</strong>
+</p>

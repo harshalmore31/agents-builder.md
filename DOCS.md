@@ -27,16 +27,14 @@ python examples/demo.py
 ### Basic Usage
 
 ```python
-from agent_builder import AgentBuilder, AgentBuilderMode
+from agent_builder import AgentBuilder
 
-# Create a basic agent
-builder = AgentBuilder(mode=AgentBuilderMode.BASIC, interactive=False)
-builder.components["role"] = "a helpful Python developer"
-builder.components["task"] = "review code for bugs and best practices"
-builder.components["constraints"] = ["Be constructive", "Focus on security"]
+# Create and run agent builder
+builder = AgentBuilder()
+builder.build()
 
-prompt = builder.generate_prompt()
-print(prompt)
+# Your professional prompt is ready!
+print(builder.generate_prompt())
 ```
 
 ## 🏗️ Architecture

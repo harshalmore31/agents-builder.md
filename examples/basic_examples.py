@@ -5,34 +5,40 @@ Basic examples showing Agent Builder usage patterns
 
 from agent_builder import AgentBuilder, AgentBuilderMode
 
+def simple_example():
+    """Simplest possible example"""
+    print("=== Simple Example ===")
+    
+    # Create and run agent builder
+    builder = AgentBuilder()
+    # In real usage, builder.build() would show interactive UI
+    # For demo, we'll set components programmatically
+    builder.components.update({
+        "role": "helpful Python developer",
+        "task": "review code for bugs",
+        "constraints": ["Be constructive"]
+    })
+    
+    # Generate prompt
+    prompt = builder.generate_prompt()
+    print("Generated prompt successfully!")
+    print(f"Length: {len(prompt)} characters")
+    
+    return builder
+
 def example_code_reviewer():
     """Example: Python code review agent using Basic mode"""
-    print("=== Code Review Agent (Basic Mode) ===")
+    print("\n=== Code Review Agent (Basic Mode) ===")
     
     builder = AgentBuilder(mode=AgentBuilderMode.BASIC, interactive=False)
     builder.components.update({
-        "role": "an experienced Python code reviewer with expertise in security and best practices",
-        "task": "review Python code for bugs, security vulnerabilities, and adherence to PEP 8",
-        "constraints": [
-            "Focus on critical security issues first",
-            "Provide specific, actionable recommendations", 
-            "Include code examples in suggestions",
-            "Be constructive and educational in feedback"
-        ]
+        "role": "experienced Python code reviewer",
+        "task": "review Python code for bugs and security issues",
+        "constraints": ["Focus on critical issues", "Provide examples"]
     })
     
-    # Update metrics
-    builder.metrics.components_filled = 3
-    
     prompt = builder.generate_prompt()
-    print(f"Generated Prompt:\n{'-'*50}")
-    print(prompt)
-    print(f"{'-'*50}")
-    
-    # Show metrics
-    validation = builder.validate_prompt()
-    print(f"Quality Score: {validation.overall_score:.1%}")
-    print(f"Success Rate: {builder.metrics.success_rate:.1%}")
+    print(f"Generated prompt: {len(prompt)} characters")
     
     return builder
 
@@ -200,21 +206,20 @@ def example_batch_processing():
 def main():
     """Run all examples"""
     print("Agent Builder - Usage Examples")
-    print("=" * 60)
+    print("=" * 40)
     
-    # Run individual examples
+    # Start with the simplest example
+    simple_example()
+    
+    # Then show a few other examples
     example_code_reviewer()
-    example_data_analyst() 
-    example_ai_architect()
-    example_batch_processing()
     
-    print("\n" + "=" * 60)
-    print("All examples completed successfully!")
-    print("\nKey Takeaways:")
-    print("- Basic Mode: Fast, simple prompts for straightforward tasks")
-    print("- AI-Assisted Mode: Enhanced prompts with context and examples")
-    print("- Expert Mode: Full control for complex, mission-critical applications")
-    print("- Batch Processing: Efficient for multiple agent creation")
+    print("\n" + "=" * 40)
+    print("Examples completed!")
+    print("\nTo get started:")
+    print("from agent_builder import AgentBuilder")
+    print("builder = AgentBuilder()")
+    print("builder.build()  # Opens interactive UI")
 
 if __name__ == "__main__":
     main()

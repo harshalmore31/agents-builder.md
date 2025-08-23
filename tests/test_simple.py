@@ -1,40 +1,44 @@
 """Simple test for Agent Builder without full UI"""
 
-from sdpp_builder import AgentBuilder, AgentBuilderMode
+from agent_builder import AgentBuilder, AgentBuilderMode
 
-def test_basic_mode():
-    """Test basic mode programmatically"""
-    print("Testing Agent Builder - Basic Mode")
-    print("=" * 50)
+def test_simple_usage():
+    """Test the simplest possible usage"""
+    print("Testing Agent Builder - Simple Usage")
+    print("=" * 40)
     
-    # Create builder in basic mode without interactive UI
-    builder = AgentBuilder(mode=AgentBuilderMode.BASIC, interactive=False)
+    # Simplest possible usage
+    builder = AgentBuilder()
     
-    # Set components programmatically
-    builder.components["role"] = "a helpful Python code reviewer"
-    builder.components["task"] = "review Python code for bugs and best practices"
-    builder.components["constraints"] = [
-        "Be constructive and educational",
-        "Focus on security issues",
-        "Provide specific examples"
-    ]
-    
-    # Update metrics manually
-    builder.metrics.components_filled = 3
+    # Set basic components for testing
+    builder.components.update({
+        "role": "helpful Python developer",
+        "task": "review code for bugs",
+        "constraints": ["Be constructive"]
+    })
     
     # Generate prompt
     prompt = builder.generate_prompt()
     
-    print("Generated Prompt:")
-    print("-" * 20)
-    print(prompt)
-    print("-" * 20)
+    print("✓ Generated prompt successfully!")
+    print(f"  Length: {len(prompt)} characters")
     
-    # Show metrics
-    validation = builder.validate_prompt()
-    print(f"\nQuality Score: {validation.overall_score:.1%}")
-    print(f"Success Rate: {builder.metrics.success_rate:.1%}")
-    print(f"Components: {builder.metrics.components_filled}/{builder.metrics.total_components}")
+    return builder
+
+def test_basic_mode():
+    """Test basic mode programmatically"""
+    print("\nTesting Agent Builder - Basic Mode")
+    print("=" * 40)
+    
+    builder = AgentBuilder(mode=AgentBuilderMode.BASIC, interactive=False)
+    builder.components.update({
+        "role": "Python code reviewer",
+        "task": "review code for bugs",
+        "constraints": ["Be constructive", "Focus on security"]
+    })
+    
+    prompt = builder.generate_prompt()
+    print(f"✓ Basic mode: {len(prompt)} characters")
     
     return builder
 
@@ -84,30 +88,26 @@ def test_ai_assisted_mode():
 
 def main():
     """Run simple tests"""
-    print("Agent Builder - Simple Test Suite")
-    print("=" * 60)
+    print("Agent Builder - Test Suite")
+    print("=" * 40)
     
     try:
+        # Test simplest usage
+        simple_builder = test_simple_usage()
+        
         # Test basic mode
         basic_builder = test_basic_mode()
         
-        # Test AI-assisted mode  
-        ai_builder = test_ai_assisted_mode()
+        print("\n" + "=" * 40)
+        print("✓ All tests passed!")
         
-        print("\n" + "=" * 60)
-        print("SUCCESS: All tests completed!")
-        print("The Agent Builder core functionality is working correctly.")
-        
-        # Test save functionality
-        print("\nTesting save functionality...")
-        basic_file = basic_builder.save("test_basic_prompt.json")
-        ai_file = ai_builder.save("test_ai_assisted_prompt.json")
-        
-        print(f"Basic prompt saved to: {basic_file}")
-        print(f"AI-assisted prompt saved to: {ai_file}")
+        # Quick save test
+        print("\n✓ Testing save...")
+        saved_file = basic_builder.save("test_prompt.json")
+        print(f"  Saved: {saved_file}")
         
     except Exception as e:
-        print(f"\nERROR: {e}")
+        print(f"\n✗ ERROR: {e}")
         raise
 
 if __name__ == "__main__":
